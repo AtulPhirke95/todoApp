@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TO DO APP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <input type="text" id="myInput" onkeyup="SearchItems()" placeholder="Search for names.." title="Type in a name">
+  <header class="site-header">
+    <nav class="navbar fixed-top navbar-expand-sm bg-info navbar-dark ">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="../app/todo_showlist.html">To Do App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="">Show list</a>
+              <a class="nav-item nav-link" href="../app/todo_createlist.html">Create list</a>
+              <a class="nav-item nav-link" href="../profile_usecase/profile_page.html">Profile</a>
+              <a class="nav-item nav-link" onclick="logout()">Logout</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+  
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <div id="searchTextId" class="text-center">
+    <input type="text" id="myInput" onkeyup="SearchItems(this.value)" placeholder="Type text to search " title="Type in a name">
+  </div>
+  
+
+  <div class="float-right">
+  <div id="actionBtnId" class="btn-group">
+    <button class='btn btn-success pull-right' id='btn-update' data-toggle='modal' data-target='#upadteToDoListModal' onclick='showPredifinedvaluesInUpdateModal()'>Update</button>
+    <button class='btn btn-danger pull-right' id='btn-delete' data-toggle='modal' data-target='#deleteToDoListModal' onclick='showDropDownListForDelete()'>Delete</button>    
+  </div>
+</div>
+
+<!-- The Update Modal -->
+<div class="modal" id="upadteToDoListModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update ToDo list</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body"> 
+        <h5 id="flash_message" style="color:red"></h2> 
+        <form onsubmit="event.preventDefault(); return updatingToDoList();">
+          <div class="form-group">
+            <label>Select ToDoList</label>
+            <select id="showListNamesToUpdateID" class="form-control" id="listToUpdate" name="listToUpdate" onclick='showUpdateDetailData()'>
+                <option value=""></option>
+            </select>
+          </div>
+          <!--
+            <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" id="nameId" placeholder="Enter name of list" name="name">
+          </div>
+          -->
+
+          <div class="form-group">
+              <label>Creation Date:</label>
+              <input type="date" id="creationDateId" name="creationDate">
+          </div>
+          <div class="form-group">
+              <label>is reminder?</label>
+              <input type="radio" id="yesRemiderId" name="isReminder" value="yes" oninput="showReminderDate()">
+              <label for="yes">yes</label>
+              <input type="radio" id="noRemiderId" name="isReminder" value="no" oninput="hideRemiderDate()">
+              <label for="no">no</label>
+          </div>
+          <div class="form-group" id="reminderDateDivId"></div>
+          <div class="form-group">
+            <label>Categorie</label>
+            <select class="form-control" id="categorie" name="categorie">
+                <option value="Work">Work</option>
+                <option value="Home">Home</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select class="form-control" id="status" name="status">
+              <option value="pending">Pending</option>
+              <option value="done">Done</option>
+          </select>
+        </div>
+          <div class="form-group">
+            <label>is public?</label>
+            <input type="radio" id="yesPublicId" name="isPublic" value="yes">
+            <label for="yes">yes</label>
+            <input type="radio" id="noPublicId" name="isPublic" value="no">
+            <label for="no">no</label>
+          </div>    
+          <button type="submit" class="btn btn-primary">Update List</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The Delete Modal -->
+<div class="modal" id="deleteToDoListModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Delete a ToDo List</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h5 id="flash_message_delete" style="color:red"></h2> 
+        <form onsubmit="event.preventDefault();return deleteAToDoList();">
+          <div class="form-group">
+            <label>Name of TodoList</label>
+            <select id="showListNamesToDeleteID" class="form-control" id="listToDelete" name="listToDelete">
+                <option value=""></option>
+            </select>
+        </div>
+          <button type="submit" class="btn btn-primary">Delete List</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div>
+    <h2 id="tableInfoId">To Do list: </h2>
+    <table id="showListTableId" class="table table-bordered">
+        <tr class="bg-success ">
+          <th>Name</th>
+          <th>Creation Date</th>
+          <th>Reminder</th>
+          <th>Categorie</th>
+          <th>Status</th>
+          <th>is public</th>
+        </tr>
+      </tbody id="tableSearchOnBody"></tbody>
+
+    </table>
+  </div>
+</div>
+</body>
+<script src="todo_showlist.js"></script>
+</html>

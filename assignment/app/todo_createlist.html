@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TO DO APP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <header class="site-header">
+    <nav class="navbar fixed-top navbar-expand-sm bg-info navbar-dark ">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="../app/todo_showlist.html">To Do App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="../app/todo_showlist.html">Show list</a>
+              <a class="nav-item nav-link" href="../app/todo_createlist.html">Create list</a>
+              <a class="nav-item nav-link" href="../profile_usecase/profile_page.html">Profile</a>
+              <a class="nav-item nav-link" onclick="logout()">Logout</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+  
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+</head>
+<body>
+  <hr>
+  <hr>
+      <div class="text-center">
+      <div class="container">
+        <h2>Create List</h2>
+        <div class="col d-flex justify-content-center">
+          <div class="card">
+            <div class="card-body" >
+              <h5 id="flash_message" style="color:red"></h2>
+        <form id="creationToDoListId" onsubmit="event.preventDefault(); return createToDoList();">
+          <div class="form-group form-inline">
+            <label>Name:</label>
+            <input class="form-control" id="nameId" placeholder="Enter name of list" name="name">
+          </div>
+          <div class="form-group form-inline">
+              <label>Creation Date:</label>
+              <input type="date" id="creationDateId" name="creationDate">
+          </div>
+          <div class="form-group form-inline">
+              <label>is reminder?</label>
+              <input type="radio" id="yesRemiderId" name="isReminder" value="yes" oninput="showReminderDate()">
+              <label for="yes">yes</label>
+              <input type="radio" id="noRemiderId" name="isReminder" value="no" oninput="hideRemiderDate()">
+              <label for="no">no</label>
+          </div>
+          <div class="form-group form-inline" id="reminderDateDivId"></div>
+          <div class="form-group form-inline">
+            <label>Categorie</label>
+            <select class="form-control form-inline" id="categorie" name="categorie">
+                <option value="Work">Work</option>
+                <option value="Home">Home</option>
+            </select>
+        </div>
+        <div class="form-group form-inline">
+          <label>Status</label>
+          <select class="form-control form-inline" id="status" name="status">
+              <option value="pending">Pending</option>
+              <option value="done">Done</option>
+          </select>
+        </div>
+          <div class="form-group form-inline">
+            <label>is public?</label>
+            <input type="radio" id="yesPublicId" name="isPublic" value="yes">
+            <label for="yes">yes</label>
+            <input type="radio" id="noPublicId" name="isPublic" value="no">
+            <label for="no">no</label>
+          </div>    
+          <button type="submit" class="btn btn-primary">Create List</button>
+        </form>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+</body>
+<script src="todo_createlist.js"></script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TO DO APP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <header class="site-header">
+    <nav class="navbar fixed-top navbar-expand-sm bg-info navbar-dark ">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="">To Do App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="../login_usercase/login.html">Login</a>
+              <a class="nav-item nav-link" href="../registration_usercase/register.html">Register</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+  
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <script src="login.js"></script>
+</head>
+<body>
+  <hr>
+  <hr>
+  <hr>
+  <div class="text-center">
+    <div class="container">
+      <h2>Login Form</h2>
+      <div class="col d-flex justify-content-center">
+        <div class="card">
+          <div class="card-body" >
+            <h5 id="flash_message" style="color:red"></h2>
+            <form onsubmit="event.preventDefault(); return formValidations();">
+              <div class="form-group form-inline">
+                <label>Email:</label>
+                <input class="form-control" id="email" placeholder="Enter email" name="email">
+              </div>
+              <h6 id="emailErrorId" style="font-size: 15px;color:red"></h6>
+              <div class="form-group form-inline">
+                <label>Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+              </div>
+              <h6 id="passwordPatternErrorId" style="font-size: 15px;color:red"></h6>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

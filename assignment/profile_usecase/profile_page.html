@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TO DO APP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <header class="site-header">
+    <nav class="navbar fixed-top navbar-expand-sm bg-info navbar-dark ">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="">To Do App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="../app/todo_showlist.html">Show list</a>
+              <a class="nav-item nav-link" href="../app/todo_createlist.html">Create list</a>
+              <a class="nav-item nav-link" href="../profile_usecase/profile_page.html">Profile</a>
+              <a class="nav-item nav-link" onclick="logout()">Logout</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+  
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+</head>
+<body>
+  
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update User Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h5 id="flash_message" style="color:red"></h2>
+        <form onsubmit="event.preventDefault(); return updatingUser();">
+          <div class="form-group form-inline">
+            <label>Update profile pic:</label>
+            <input type="file" id="profile_pic" multiple size="50">
+          </div>
+          <div class="form-group">
+              <label>First Name:</label>
+              <input class="form-control" id="first_name" placeholder="Enter first name" name="first_name">
+          </div>
+          <div class="form-group">
+              <label>Last Name:</label>
+              <input class="form-control" id="last_name" placeholder="Enter last name" name="last_name">
+          </div>
+          <div class="form-group">
+            <label>Gender</label>
+            <select class="form-control" id="gender" name="gender">
+                <option value=""></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+          <div class="form-group">
+              <label>Address:</label>
+              <input class="form-control" id="address" placeholder="Enter address" name="address">
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<hr>
+<hr>
+<hr>
+
+<!--
+<div class="container">
+  <div>
+    <h2>List Of Users: </h2>
+    <table class="table table-bordered">
+        <tr class="bg-primary">
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Password</th>
+            <th>Modify</th>
+        </tr>
+        <tr>
+            <td id="table_email"></td>
+            <td id="table_first_name"></td>
+            <td id="table_last_name"></td>
+            <td id="table_gender"></td>
+            <td id="table_address"></td>
+            <td id="table_password"></td>
+            <td>
+              <button class='btn btn-success' id="btn-update" data-toggle="modal" data-target="#myModal">Update</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+-->
+
+  
+<div class="text-center">
+  <div class="container">
+    <h2>Profile Information</h2>
+    <div class="col d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body" >
+          <div class="text-center">
+            <img id="profile_img" class="rounded-circle account-img" width="100" height="100" src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png">
+          </div>
+            <hr>  
+          <div class="text-left">
+              <label for="EmailID"><strong>Email: </strong></label>
+              <label id="table_email"></label>
+              <br>
+              <label for="FirstName"><strong>First Name: </strong></label>
+              <label id="table_first_name"></label>
+              <br>
+              <label for="LastName"><strong>Last Name: </strong></label>
+              <label id="table_last_name"></label>
+              <br>
+              <label for="Gender"><strong>Gender: </strong></label>
+              <label id="table_gender"></label>
+              <br>
+              <label for="Address"><strong>Address: </strong></label>
+              <label id="table_address"></label>
+          </div>
+            <hr>
+            <button class='btn btn-success' id="btn-update" data-toggle="modal" data-target="#myModal">Update</button>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+<script src="profile_page.js"></script>
+</html>
